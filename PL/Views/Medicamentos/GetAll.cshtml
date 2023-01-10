@@ -1,0 +1,46 @@
+﻿@model ML.Medicamento
+@{
+    ViewData["Title"] = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @Html.ActionLink("Agregar", "Form", "Medicamentos", htmlAttributes: new { @class = "btn btn-success" })
+</div>
+
+<table class="table table-bordered table-responsive" id="tablaEmpresa">
+    <thead class="table">
+        <tr>
+            <th>Editar</th>
+            <th>IdMedicamento</th>
+            <th>Nombre</th>
+            <th>Descripcion</th>
+            <th>FechaCaducidad</th>
+            <th>PrecioUnitario</th>
+            <th>Stock</th>
+            <th>IdProveedor</th>
+            <th>Nombre</th>
+            <th>Eliminar</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (ML.Medicamento medicamento in Model.MedicamentosList)
+        {
+        <tr>
+            <td class="text-center"><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("getall", "medicamentos", new { IdMedicamento = medicamento.IdMedicamento})"></a></td>
+            <td> @medicamento.IdMedicamento</td>
+            <td> @medicamento.Nombre</td>
+            <td>@medicamento.Descripcion</td>
+            <td>@medicamento.FechaCaducidad</td>
+            <td>@medicamento.PrecioUnitario</td>
+            <td>@medicamento.Stock</td>
+            <td>@medicamento.Proveedor.IdProveedor</td>
+            <td>@medicamento.Proveedor.Nombre</td>
+
+            <td><a class="btn btn-danger" href="@Url.Action("Delete","Empresa", new { IdMedicamento = medicamento.IdMedicamento})"onclick="return confirm('Estas seguro que deseas eliminar este registro?');"> <i class="bi bi-trash3-fill"></i>  </a></td>
+        </tr>
+        }
+ </tbody>
+</table>

@@ -1,0 +1,19 @@
+﻿@model ML.Medicamento
+@{
+    ViewData["Title"] = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Form</h1>
+
+@using (Html.BeginForm("Form", "Medicamentos", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>
+        
+    </div>
+
+    <input type="submit" value="Guardar" class="btn btn-success" />
+
+
+}
+
